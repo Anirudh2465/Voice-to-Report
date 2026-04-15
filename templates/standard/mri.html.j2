@@ -1,0 +1,49 @@
+{% extends "base.html.j2" %}
+
+{% block report_title %}Magnetic Resonance Imaging (MRI) Report{% endblock %}
+
+{% block sections %}
+{% if report_content.clinical_history %}
+<div class="section">
+  <div class="section-title">Clinical History</div>
+  <div class="section-content">{{ report_content.clinical_history }}</div>
+</div>
+{% endif %}
+
+<div class="section">
+  <div class="section-title">Technique</div>
+  <div class="section-content">
+    {% if report_content.technique %}
+    {{ report_content.technique }}
+    {% else %}
+    MRI examination performed on a 1.5T/3T system. Sequences included T1W, T2W, FLAIR, DWI,
+    and post-gadolinium contrast sequences as clinically appropriate.
+    {% endif %}
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Findings</div>
+  <div class="section-content">
+    {% if report_content.findings %}
+    {{ report_content.findings }}
+    {% else %}
+    <em>No findings documented.</em>
+    {% endif %}
+  </div>
+</div>
+
+{% if report_content.impression %}
+<div class="section">
+  <div class="section-title">Impression</div>
+  <div class="section-content">{{ report_content.impression }}</div>
+</div>
+{% endif %}
+
+{% if report_content.recommendations %}
+<div class="section">
+  <div class="section-title">Recommendations</div>
+  <div class="section-content">{{ report_content.recommendations }}</div>
+</div>
+{% endif %}
+{% endblock %}

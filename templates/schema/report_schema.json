@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Radiology Report Schema",
+  "description": "Standard schema for all modality report content fields",
+  "type": "object",
+  "properties": {
+    "referring_doctor": {
+      "type": "string",
+      "description": "Name of the referring physician"
+    },
+    "clinical_history": {
+      "type": "string",
+      "description": "Patient's clinical history and reason for examination"
+    },
+    "technique": {
+      "type": "string",
+      "description": "Imaging technique and parameters used"
+    },
+    "findings": {
+      "type": "string",
+      "description": "Detailed imaging findings"
+    },
+    "impression": {
+      "type": "string",
+      "description": "Radiologist's impression and diagnosis"
+    },
+    "recommendations": {
+      "type": "string",
+      "description": "Follow-up recommendations if any"
+    }
+  },
+  "modality_specific": {
+    "USG": {
+      "required": ["clinical_history", "findings", "impression"],
+      "optional": ["technique", "recommendations"]
+    },
+    "CT": {
+      "required": ["clinical_history", "technique", "findings", "impression"],
+      "optional": ["recommendations"]
+    },
+    "MRI": {
+      "required": ["clinical_history", "technique", "findings", "impression"],
+      "optional": ["recommendations"]
+    },
+    "XRAY": {
+      "required": ["clinical_history", "findings", "impression"],
+      "optional": ["technique", "recommendations"]
+    }
+  }
+}

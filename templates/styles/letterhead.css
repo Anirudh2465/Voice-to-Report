@@ -1,0 +1,154 @@
+/* ── Letterhead & Print Styles for Radiology Reports ── */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #1a365d;
+  --accent: #2b6cb0;
+  --text: #2d3748;
+  --muted: #718096;
+  --border: #e2e8f0;
+  --bg: #ffffff;
+}
+
+@page {
+  size: A4;
+  margin: 20mm 18mm 20mm 18mm;
+  @top-center {
+    content: element(header);
+  }
+  @bottom-center {
+    content: element(footer);
+    font-size: 8pt;
+    color: var(--muted);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 10.5pt;
+  color: var(--text);
+  line-height: 1.6;
+  background: var(--bg);
+}
+
+/* ── Letterhead ── */
+.letterhead {
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.letterhead .institution-name {
+  font-size: 18pt;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+}
+
+.letterhead .radiologist-info {
+  text-align: right;
+  font-size: 9pt;
+  color: var(--muted);
+}
+
+/* ── Patient Info Table ── */
+.patient-info {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  font-size: 9.5pt;
+}
+
+.patient-info td {
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+  background: #f7fafc;
+}
+
+.patient-info td:first-child {
+  font-weight: 600;
+  color: var(--primary);
+  width: 120px;
+}
+
+/* ── Report Title ── */
+.report-title {
+  text-align: center;
+  font-size: 13pt;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 16px 0 12px;
+  padding: 8px;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+}
+
+/* ── Section Headings ── */
+.section {
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1.5px solid var(--accent);
+  padding-bottom: 2px;
+  margin-bottom: 6px;
+}
+
+.section-content {
+  font-size: 10.5pt;
+  line-height: 1.7;
+  color: var(--text);
+  white-space: pre-wrap;
+}
+
+/* ── Signature Block ── */
+.signature-block {
+  margin-top: 30px;
+  text-align: right;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+
+.signature-name {
+  font-weight: 700;
+  font-size: 11pt;
+  color: var(--primary);
+}
+
+.signature-designation {
+  font-size: 9.5pt;
+  color: var(--muted);
+}
+
+/* ── Footer ── */
+.report-footer {
+  font-size: 8pt;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 6px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media print {
+  body { print-color-adjust: exact; }
+  .page-break { page-break-before: always; }
+}
